@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Roboto+Condensed:wght@600;700&display=swap');
+
+:root {
+  --font-sans: 'Roboto', system-ui, -apple-system, sans-serif;
+  --font-display: 'Roboto Condensed', 'Roboto', system-ui, sans-serif;
+  --font-size: 16px;
+  --background: #f0f4f8;
+  --foreground: #0d1b2e;
+  --card: #ffffff;
+  --card-foreground: #0d1b2e;
+  --popover: #ffffff;
+  --popover-foreground: #0d1b2e;
+  --primary: #0d2b5e;
+  --primary-foreground: #ffffff;
+  --secondary: #e8edf5;
+  --secondary-foreground: #0d2b5e;
+  --muted: #e2e8f0;
+  --muted-foreground: #64748b;
+  --accent: #1e4db7;
+  --accent-foreground: #ffffff;
+  --destructive: #c8102e;
+  --destructive-foreground: #ffffff;
+  --border: rgba(13, 43, 94, 0.12);
+  --input-background: #f0f4f8;
+  --switch-background: #94a3b8;
+  --radius: 0.625rem;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure leaflet map container fills space */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: var(--font-sans) !important;
+}
+
+/* Custom scrollbar for beautiful drawers/history lists */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Page transitions / animations */
+.fade-in {
+  animation: fadeIn 0.25s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulse animation for 'En línea' indicator */
+.animate-pulse-green {
+  animation: pulseGreen 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.92); }
+}
+
+/* Custom iOS Switch styling */
+.switch-container {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch-container input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch-background);
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 24px;
+}
+
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+input:checked + .switch-slider {
+  background-color: #16a34a; /* Green for checked state, matching shadcn Switch */
+}
+
+input:checked + .switch-slider:before {
+  transform: translateX(20px);
+}
+
+/* Primary checked color for notification switches */
+input:checked.switch-primary + .switch-slider {
+  background-color: var(--accent);
+}
+
+/* Custom leaflet popup refinements */
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-content {
+  margin: 10px 12px 10px 10px !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Audio recording waveform mock styling */
+.audio-bar {
+  transition: width 1s linear;
+}
+
+/* Slide up animations for drawers and modals */
+.slide-up {
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+/* Glassmorphism for overlays */
+.overlay-blur {
+  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
